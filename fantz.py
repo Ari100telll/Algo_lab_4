@@ -26,6 +26,8 @@ def find_substring(string, pow_strings_arr: list):
         return 0
     counter = 0
     for pow_string in pow_strings_arr:
+        if len(pow_string) > len(string):
+            break
         result = re.match(pow_string, string)
         if result is not None:
             index = result.span(0)[1]
@@ -47,14 +49,4 @@ def count_elements_in_string(string, element):
 if __name__ == '__main__':
     s, n = input().split(" ")
     n = int(n)
-    len_arr = len(s)
-    n_arr = get_pow_arr(n, len_arr)
-    for a in n_arr:
-        print(a)
-    print(find_substring(s, n_arr))
-
-#10000001101111110001110111000100010111101111111001111011111000000110111111000110000001101111110001 3 c: 10 sub_c: 11
-#100000011011111100011101110001000101111011
-#     1                2     3          4
-# 1110011010101001 1010001 1 11110011
-# 11100110101010011010001111110011 3
+    print(count_elements_in_string(s, n))
